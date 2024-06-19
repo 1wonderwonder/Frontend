@@ -63,4 +63,9 @@ pipeline {
             cleanWs()
         }
     }
+    success {
+
+        build wait: false, job: 'app_of_apps', parameters: [string(name: 'backendDockerTag', value: '$backendTag'), string(name: 'frontendDockerTag', value: '$frontendTag')]
+    
+    }
 }
